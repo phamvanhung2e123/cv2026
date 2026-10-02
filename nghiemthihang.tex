@@ -1,0 +1,303 @@
+%%%%
+% MTecknology's Resume
+%%%%
+% Author: Michael Lustfield
+% License: CC-BY-4
+% - https://creativecommons.org/licenses/by/4.0/legalcode.txt
+%%%%
+
+\documentclass[letterpaper,10pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%
+%% BEGIN_FILE: mteck.sty
+%% NOTE: Everything between here and END_FILE can
+%% be relocated to "mteck.sty" and then included with:
+%\usepackage{mteck}
+
+% Dependencies
+% NOTE: Some packages (lastpage, hyperref) require second build!
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{hyperref}
+% Sans-Serif
+%\usepackage[sfdefault]{FiraSans}
+%\usepackage[sfdefault]{roboto}
+%\usepackage[sfdefault]{noto-sans}
+%\usepackage[default]{sourcesanspro}
+
+% Serif
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+
+% Colors
+% Use with \color{Name}
+% Can wrap entire heading with {\color{accent} [...] }
+\usepackage{xcolor}
+\definecolor{accentTitle}{HTML}{0e6e55}
+\definecolor{accentText}{HTML}{0e6e55}
+\definecolor{accentLine}{HTML}{a16f0b}
+
+% Misc. Options
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\urlstyle{same}
+
+% Adjust Margins
+\addtolength{\oddsidemargin}{-0.7in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.4in}
+
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\footskip}{3.7pt}
+\raggedbottom
+\raggedright
+
+% ATS Readability
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+%-----------------%
+% Custom Commands %
+%-----------------%
+
+% Centered title along with subtitle between HR
+% Usage: \documentTitle{Name}{Details}
+\newcommand{\documentTitle}[2]{
+  \begin{center}
+    {\Huge\scshape\color{accentTitle} #1}
+    \vspace{10pt}
+    {\color{accentLine} \hrule}
+    \vspace{2pt}
+    %{\footnotesize\color{accentTitle} #2}
+    \footnotesize{#2}
+    \vspace{2pt}
+    {\color{accentLine} \hrule}
+  \end{center}
+}
+
+% Create a footer with correct padding
+% Usage: \documentFooter{\thepage of X}
+\newcommand{\documentFooter}[1]{
+  \setlength{\footskip}{10.25pt}
+  \fancyfoot[C]{\footnotesize #1}
+}
+
+% Simple wrapper to set up page numbering
+% Usage: \numberedPages
+% WARNING: Must run pdflatex twice!
+\newcommand{\numberedPages}{
+  \documentFooter{\thepage/\pageref{LastPage}}
+}
+
+% Section heading with horizontal rule
+% Usage: \section{Title}
+\titleformat{\section}{
+  \vspace{-5pt}
+  \color{accentText}
+  \scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{accentLine}\titlerule]
+
+% Section heading with separator and content on same line
+% Usage: \tinysection{Title}
+\newcommand{\tinysection}[1]{
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}
+  {\scshape\large{\bfseries\color{accentText}#1} {\color{accentLine} |}}
+}
+
+% Indented line with arguments left/right aligned in document
+% Usage: \heading{Left}{Right}
+\newcommand{\heading}[2]{
+  \hspace{10pt}#1\hfill#2\\
+}
+
+% Adds \textbf to \heading
+\newcommand{\headingBf}[2]{
+  \heading{\textbf{#1}}{\textbf{#2}}
+}
+
+% Adds \textit to \heading
+\newcommand{\headingIt}[2]{
+  \heading{\textit{#1}}{\textit{#2}}
+}
+
+% Template for itemized lists
+% Usage: \begin{resume_list} [items] \end{resume_list}
+\newenvironment{resume_list}{
+  \vspace{-7pt}
+  \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=30pt]
+}{
+  \end{itemize}
+  %\vspace{-2pt}
+}
+
+% Formats an item to use as an itemized title
+% Usage: \itemTitle{Title}
+\newcommand{\itemTitle}[1]{
+  \item[] \underline{#1}\vspace{4pt}
+}
+
+% Bullets used in itemized lists
+\renewcommand\labelitemi{--}
+
+%% END_FILE: mteck.sty
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+%===================%
+% John Doe's Resume %
+%===================%
+
+%\numberedPages % NOTE: lastpage requires a second build
+%\documentFooter{\thepage of 2} % Does similar without using lastpage
+\begin{document}
+
+  %---------%
+  % Heading %
+  %---------%
+
+  \documentTitle{Nghiem Thi Hang}{
+    % Web Version
+    %\raisebox{-0.05\height} \faPhone\ [redacted - web copy] ~
+    %\raisebox{-0.15\height} \faEnvelope\ [redacted - web copy] ~
+    %%
+    Saitama, Japan \\
+    \href{tel:07085191501}{
+      \raisebox{-0.05\height} \faPhone\ 070-8519-1501} ~
+    \href{mailto:nghiemthihang89@gmail.com}{
+      \raisebox{-0.15\height} \faEnvelope\ nghiemthihang89@gmail.com} \\
+    \vspace{2pt}
+    \href{https://hangnghiem.github.io/nghiemhang/}{
+      \raisebox{-0.15\height}{\color{accentText} \faGlobe\ \underline{hangnghiem.github.io/nghiemhang}}} ~
+    \href{https://github.com/hangnghiem}{
+      \raisebox{-0.15\height}{\color{accentText} \faGithub\ \underline{github.com/hangnghiem}}} ~
+    \href{https://www.linkedin.com/in/hang-nghiem-045871a4/}{
+      \raisebox{-0.15\height}{\color{accentText} \faLinkedin\ \underline{linkedin.com/in/hang-nghiem}}}
+  }
+
+  %---------%
+  % Summary %
+  %---------%
+
+  \tinysection{Summary}
+  IT and technology professional with 7+ years of experience in global technology and AI environments, with hands-on experience supporting colleagues with onboarding, workplace technology, device requests, and common technical issues. Experienced using ServiceNow for IT device requests and Microsoft applications including Microsoft 365, Teams, Outlook, and OneDrive. Strong problem-solving, troubleshooting, communication, documentation, and process improvement skills, with technical knowledge of Python, JavaScript, HTML/CSS, and Git. Experienced working with multinational teams and technical stakeholders, managing multiple priorities, and providing support in fast-paced corporate environments.
+
+  %--------%
+  % Skills %
+  %--------%
+
+  \section{Skills}
+    \begin{resume_list}
+      \item \textbf{IT Support:} Employee Onboarding, Device Request, Microsoft 365, Microsoft Teams, Microsoft Outlook, Microsoft OneDrive, Workplace Technology Support, Technical Issue Investigation, ServiceNow, Incident/Request Follow-up\\ 
+      \item \textbf{Technical Skills:} Python, JavaScript, HTML/CSS, Git, Google Workspace\\ 
+      \item \textbf{Project Management:} Project Coordination, Stakeholder Communication, Team Leadership, Project Monitoring, Process Improvement, Documentation, KPI Tracking\\ 
+      \item \textbf{AI/Data:} Prompt Engineering, LLM Evaluation, NLP, AI QA, Dataset Curation, Localization, Error Analysis\\ 
+      \item \textbf{Languages:} Vietnamese (Native), English (Business), Japanese (Intermediate - JLPT N3)
+    \end{resume_list}
+
+  %----------%
+  % Projects %
+  %----------%
+
+  \section{Projects}
+  \vspace{3pt}
+  {\textit{AI-assisted builds --- demos \& source on \href{https://hangnghiem.github.io/nghiemhang/}{portfolio} and \href{https://github.com/hangnghiem}{GitHub}.}}\\
+  \vspace{-3pt}
+  \begin{resume_list}
+    \item \textbf{AI Daily News} \,--\, AI news turned into leveled English lessons with audio and quizzes. \textit{(JavaScript, Web Speech API)}
+    \item \textbf{LocalGPT} \,--\, ChatGPT-style chat app with streaming, running locally via Ollama. \textit{(JavaScript, Ollama / OpenAI API)}
+    \item \textbf{Fairy Tale Kingdom Builder} \,--\, Gamified English-learning app for kids. \textit{(JavaScript)}
+    \item \textbf{TimeTrack} \,--\, Activity tracker with charts and JSON export/import. \textit{(JavaScript, Chart.js)}
+  \end{resume_list}
+
+  %------------%
+  % Experience %
+  %------------%
+
+  \section{Recent Experience}
+
+  \headingBf{Cognizant Japan}{Jan 2025 -- Present}
+  \headingIt{Linguistic Team Lead, supporting Google}{}
+  \begin{resume_list}
+  
+  \itemTitle{Project: Generative AI}
+    \item {Provide day-to-day technical and workplace support to colleagues, including assisting with PC setup and onboarding activities.}
+    \item {Support new employees during onboarding by helping them access and use required workplace technology and applications.}
+    \item {Use ServiceNow to submit and manage IT device requests for team members.}
+    \item {Support colleagues with Microsoft applications including Microsoft 365, Teams, Outlook, and OneDrive.}
+    \item {Assist colleagues in resolving common PC, software, application, and workplace technology issues.}
+    \item {Coordinate with relevant IT and technical teams when issues require additional support or escalation.}
+    \item {Lead a team of 5 language specialists, assigning work, monitoring progress, and ensuring timely project delivery.}
+    \item {Coordinate daily operations between project managers, engineers, and linguists.}
+    \item {Curate and validate datasets for supervised fine-tuning and model alignment.}
+    \item {Evaluate AI reasoning, factual accuracy, safety, and quality through SxS evaluations.}
+    \item {Collaborate with engineering teams to validate new AI features and provide actionable feedback.}
+    \item {Produce quality reports, identify opportunities to improve workflows, reduce manual work, and increase operational efficiency.}
+    
+  \end{resume_list}
+  
+  \headingBf{Aceolution Japan}{Jan 2024 -- Dec 2024}
+  \headingIt{Linguistic Project Manager}{}
+  \begin{resume_list}
+
+  \itemTitle{Project: Generative AI, NLP}
+    \item {Supported team members with workplace and technical issues and coordinated with relevant teams when additional assistance was required.}
+    \item {Coordinated multilingual AI projects involving linguists, QA teams, and client stakeholders.}
+    \item {Managed schedules, task allocation, delivery tracking, and workload balancing.}
+    \item {Maintained documentation, quality guidelines, and KPI reporting.}
+    \item {Improved workflows and monitored project quality.}
+    \item {Managed team performance and facilitated communication across teams.}
+  \end{resume_list}
+  
+  \item{}
+  \item{}
+  \headingBf{Adecco Group, Japan}{Dec 2018 -- Dec 2023}
+  \headingIt{Vietnamese Associate Linguist, supporting Google}{}
+  \begin{resume_list}
+   
+    \itemTitle{Project: NLP}
+    \item {Collaborated with engineers and project managers on Google NLP projects.}
+    \item {Supported colleagues with technical and workplace issues when needed.}
+    \item {Reviewed and annotated linguistic datasets while improving annotation quality.}
+    \item {Contributed to speech recognition, text normalization, named entity processing, and localization.}
+    \item {Supported guideline development and cross-functional quality initiatives.}
+  \end{resume_list}
+
+  \headingBf{Phuong Dong University, Vietnam}{Aug 2012 -- Jun 2014}
+  \headingIt{English Teacher}{}
+  \begin{resume_list}
+   
+    \item {Plan, design, and organize comprehensive instructional materials and lesson plans.} 
+        \item {Evaluate student progress, and learning outcomes.}
+        \item {Conduct researches on student learning to improve the quality of teaching and learning.}
+  \end{resume_list}
+  %-----------%
+  % Education %
+  %-----------%
+
+  \section{Education}
+ \begin{resume_list}
+ \item {\textbf{MA - English:} }{Vietnam National University, Hanoi, Vietnam, Sep 2012 --  Jun 2014.}\\
+ \item {\textbf{BA - English:} }{Vietnam National University, Hanoi, Vietnam, Sep 2007 --  Jun 2011.}  
+\end{resume_list}
+
+
+  %----------------------------%
+  % Extracurricular Activities %
+  %----------------------------%
+ 
+
+\end{document}
